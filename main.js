@@ -85,6 +85,10 @@ htmlReadButton.addEventListener("click", function() {
 
 addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "yes");
 addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
+addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
+addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
+addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
+
 
 
 
@@ -105,6 +109,25 @@ for (obj in myLibrary) {
   console.log(myLibrary[obj]);
 }
 
+//Dialog Button Open and Close/////////
+
+const bookDialog = document.getElementById("book-dialog");
+console.log(bookDialog);
+
+const addBookButton = document.querySelector("#book-dialog + .add-book");
+
+console.log(addBookButton);
+
+const cancelBookButton = document.querySelector("dialog button");
+console.log(cancelBookButton);
+
+addBookButton.addEventListener("click", function() {
+  bookDialog.showModal();
+})
+
+cancelBookButton.addEventListener("click", function() {
+  bookDialog.close();
+})
 
 
 
