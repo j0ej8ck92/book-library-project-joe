@@ -27,35 +27,57 @@ function addBookToLibrary(title, author, pages, read) {
   let libraryContent = document.querySelector(".library-content");
   libraryContent.append(cardDiv);
 
-  console.log(libraryContent);
-  console.log(cardDiv);
-
+  //console.log(libraryContent);
+  //console.log(cardDiv);
+ 
   let bookTitle = document.createElement("div");
   bookTitle.classList.add("book-title");
   cardDiv.append(bookTitle);
   bookTitle.textContent = newBook.title;
 
-  console.log(bookTitle);
+  //console.log(bookTitle);
 
   let authorName = document.createElement("div");
   authorName.classList.add("author");
   cardDiv.append(authorName);
   authorName.textContent = newBook.author;
 
-  console.log(authorName);
+  //console.log(authorName);
 
   let bookPages = document.createElement("div");
   bookPages.classList.add("pages");
   cardDiv.append(bookPages);
   bookPages.textContent = newBook.pages;
 
-  console.log(bookPages);
+  //console.log(bookPages);
 
   let bookRead = document.createElement("div");
   bookRead.classList.add("read");
   cardDiv.append(bookRead);
 
-  let readButton = document.createElement("button");
+  let bookReadLabel = document.createElement("label");
+  bookReadLabel.setAttribute("for", "confirm");
+  bookReadLabel.textContent = "Read:";
+  bookRead.append(bookReadLabel);
+
+  let bookReadSelection = document.createElement("select");
+  bookReadSelection.id = "confirm";
+  bookReadSelection.name = "confirm";
+  bookRead.append(bookReadSelection);
+
+  let selectionOptionYes = document.createElement("option");
+  selectionOptionYes.value = "yes";
+  selectionOptionYes.textContent = "Yes";
+  bookReadSelection.append(selectionOptionYes);
+
+  let selectionOptionNo = document.createElement("option");
+  selectionOptionNo.value = "no";
+  selectionOptionNo.textContent = "No";
+  bookReadSelection.append(selectionOptionNo);
+
+
+
+ /* let readButton = document.createElement("button");
   readButton.classList.add("read-yes-or-no");
   bookRead.append(readButton);
   readButton.textContent = "Read";
@@ -67,9 +89,9 @@ function addBookToLibrary(title, author, pages, read) {
       readButton.textContent = "Read";
     }
 
-  });
+  });*/
 
-  console.log(bookRead);
+  //console.log(bookRead);
 }
 
 let htmlReadButton = document.querySelector(".read-yes-or-no");
@@ -85,9 +107,7 @@ htmlReadButton.addEventListener("click", function() {
 
 addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "yes");
 addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
-addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
-addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
-addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
+
 
 
 
@@ -128,6 +148,47 @@ addBookButton.addEventListener("click", function() {
 cancelBookButton.addEventListener("click", function() {
   bookDialog.close();
 })
+
+
+let form = document.getElementById("form");
+console.log(form);
+
+let bookNameInput = document.getElementById("book-name");
+console.log(bookNameInput);
+
+let authorNameInput = document.getElementById("author-name");
+console.log(authorNameInput);
+
+let pageCountInput = document.getElementById("page-count");
+console.log(pageCountInput);
+
+let option = document.querySelector("option");
+//let optionNo = document.querySelector("#no");
+
+
+console.log(option);
+
+form.addEventListener("submit", function(e) {
+   e.preventDefault(); 
+   
+   if (option.value === "yes") {
+
+      option.innerText = "Yes";
+
+   } else (option.value === "no") 
+
+      option.innerText = "No";
+
+   
+
+   
+   
+
+    addBookToLibrary(bookNameInput.value, authorNameInput.value, pageCountInput.value, option.innerText);
+  //debugger;
+})
+
+
 
 
 

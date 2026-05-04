@@ -16,8 +16,37 @@
     <div class="header">
         <dialog id="book-dialog">
           <div class="dialog-content">
+            <form id="form" action="/" method="GET">
+                <div class="form-div">
+                <label for="book-name">Book Name:</label>
+                <input type="text" name="book-name" id="book-name" required>
+                </div>
+                <div class="form-div">
+                <label for="author-name">Author Name:</label>
+                <input type="text" name="author-name" id="author-name" required>
+                </div>
+                <div class="form-div">
+                <label for="page-count">Page Number:</label>
+                <input type="number" name="page-count" id="page-count" required>
+                </div>
+                <div class="form-div">
+                <label for="confirm">Read:</label>
+                <select id="confirm" name="confirm">
+                <option id="yes" value="yes">Yes</option>
+                <option id="no" value="no">No</option>
+                </select>
+                </div>
+                <div class="form-div">
+                <button class="form-submit-button" type="submit">Submit</button>
+                </div>
+
+
+
+
+
+
+            </form>
             
-            <H1>It's five o'clock somewhere</H1>
             <button class="cancel-book">Cancel</button>
           </div>  
         </dialog>
