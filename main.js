@@ -1,12 +1,7 @@
 const myLibrary = [];
+console.log(myLibrary);
 
-
-
-
-
-
-
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read) { //figure out parameter for read value and how to use sync value of form to book constructor///
   // the constructor...
    this.title = title;
    this.author = author;
@@ -54,68 +49,101 @@ function addBookToLibrary(title, author, pages, read) {
   let bookRead = document.createElement("div");
   bookRead.classList.add("read");
   cardDiv.append(bookRead);
+ 
 
-  let bookReadLabel = document.createElement("label");
-  bookReadLabel.setAttribute("for", "confirm");
-  bookReadLabel.textContent = "Read:";
-  bookRead.append(bookReadLabel);
-
-  let bookReadSelection = document.createElement("select");
-  bookReadSelection.id = "confirm";
-  bookReadSelection.name = "confirm";
-  bookRead.append(bookReadSelection);
-
-  let selectionOptionYes = document.createElement("option");
-  selectionOptionYes.value = "yes";
-  selectionOptionYes.textContent = "Yes";
-  bookReadSelection.append(selectionOptionYes);
-
-  let selectionOptionNo = document.createElement("option");
-  selectionOptionNo.value = "no";
-  selectionOptionNo.textContent = "No";
-  bookReadSelection.append(selectionOptionNo);
-
-
-
- /* let readButton = document.createElement("button");
+  let readButton = document.createElement("button");
   readButton.classList.add("read-yes-or-no");
   bookRead.append(readButton);
-  readButton.textContent = "Read";
+  readButton.textContent = "Read:";
+
+  let readValue = document.createElement("div");
+  readValue.classList.add("read-value");
+  bookRead.append(readValue);
+  readValue.textContent = newBook.read;
 
   readButton.addEventListener("click", function() {
-    if (readButton.textContent === "Read") {
-      readButton.textContent = "Not Read";
+
+    if (readValue.textContent === "Yes") {
+
+      readValue.textContent = "No";
+
     } else {
-      readButton.textContent = "Read";
+
+      readValue.textContent = "Yes";
     }
 
-  });*/
+  
 
-  //console.log(bookRead);
+  });
+
+  let deleteDiv = document.createElement("div");
+  deleteDiv.classList.add(".delete-div");
+  cardDiv.append(deleteDiv);
+
+  let deleteBookButton = document.createElement("button");
+  deleteBookButton.classList.add("delete-book-button");
+  deleteBookButton.textContent = "Delete";
+  deleteDiv.append(deleteBookButton);
+
+  
+    
+
+  
+      deleteBookButton.addEventListener("click", function(event) {
+        //console.log(myLibrary);
+        cardDiv.remove();
+        debugger;
+
+      });
+  
+  
+
+
 }
+
+let readValue = document.querySelector(".read-value");
+//console.log(readValue);
 
 let htmlReadButton = document.querySelector(".read-yes-or-no");
 
 htmlReadButton.addEventListener("click", function() {
-  if (htmlReadButton.textContent === "Read") {
-    htmlReadButton.textContent = "Not Read";
+  if (readValue.textContent === "Yes") {
+    readValue.textContent = "No";
   } else {
-    htmlReadButton.textContent = "Read";
+    readValue.textContent = "Yes";
   }
 })
 
+let htmlDeleteBookButton = document.querySelector(".delete-book-html");
+let htmlCard = document.querySelector(".card");
+htmlDeleteBookButton.addEventListener("click", function() {
+  htmlCard.remove();
 
-addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "yes");
-addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
-
-
-
-
-
+})
 
 
+addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "Yes");
 
-//console.log(myLibrary);
+
+/*console.log(myLibrary);
+
+for (obj in myLibrary) {
+  console.log(myLibrary[obj]);
+
+}*/
+
+function removeItemOnce(arr, value){
+  const index = arr.indexOf(value);
+
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+
+  return arr;
+}
+
+
+
 
 //for (const obj in myLibrary) {
 
@@ -123,23 +151,18 @@ addBookToLibrary("Bless Me Ultima", "Rudolfo Amaya", 200, "yes");
 
 //}
 
-console.log(myLibrary);
-
-for (obj in myLibrary) {
-  console.log(myLibrary[obj]);
-}
 
 //Dialog Button Open and Close/////////
 
 const bookDialog = document.getElementById("book-dialog");
-console.log(bookDialog);
+//console.log(bookDialog);
 
 const addBookButton = document.querySelector("#book-dialog + .add-book");
 
-console.log(addBookButton);
+//console.log(addBookButton);
 
-const cancelBookButton = document.querySelector("dialog button");
-console.log(cancelBookButton);
+const cancelBookButton = document.querySelector(".cancel-book");
+//console.log(cancelBookButton);
 
 addBookButton.addEventListener("click", function() {
   bookDialog.showModal();
@@ -151,44 +174,43 @@ cancelBookButton.addEventListener("click", function() {
 
 
 let form = document.getElementById("form");
-console.log(form);
+//console.log(form);
 
 let bookNameInput = document.getElementById("book-name");
-console.log(bookNameInput);
+//console.log(bookNameInput);
 
 let authorNameInput = document.getElementById("author-name");
-console.log(authorNameInput);
+//console.log(authorNameInput);
 
 let pageCountInput = document.getElementById("page-count");
-console.log(pageCountInput);
+//console.log(pageCountInput);
 
-let option = document.querySelector("option");
+let readSelection = document.getElementById("select");
+
+let submitButton = document.getElementById("submit");
+//console.log(submit);
+
+
+
+
+
 //let optionNo = document.querySelector("#no");
 
 
-console.log(option);
 
-form.addEventListener("submit", function(e) {
-   e.preventDefault(); 
+
+form.addEventListener("submit", (event) => {
+   event.preventDefault();
    
-   if (option.value === "yes") {
+   console.log(readSelection.value);
 
-      option.innerText = "Yes";
-
-   } else (option.value === "no") 
-
-      option.innerText = "No";
-
-   
-
-   
-   
-
-    addBookToLibrary(bookNameInput.value, authorNameInput.value, pageCountInput.value, option.innerText);
-  //debugger;
+   addBookToLibrary(bookNameInput.value, authorNameInput.value, pageCountInput.value, readSelection.value);
+   form.reset();
+  debugger;
 })
 
 
 
 
 
+console.log(myLibrary);
