@@ -1,5 +1,4 @@
 const myLibrary = [];
-console.log(myLibrary);
 
 function Book(title, author, pages, read) { //figure out parameter for read value and how to use sync value of form to book constructor///
   // the constructor...
@@ -90,10 +89,14 @@ function addBookToLibrary(title, author, pages, read) {
 
   
       deleteBookButton.addEventListener("click", function(event) {
-        //console.log(myLibrary);
-        cardDiv.remove();
-        debugger;
+        
+        const bookId = newBook.id;
+        const index = myLibrary.findIndex(book => book.id === bookId);
+        myLibrary.splice(index, 1);
 
+        cardDiv.remove();
+        
+        console.log(myLibrary);
       });
   
   
@@ -121,35 +124,10 @@ htmlDeleteBookButton.addEventListener("click", function() {
 
 })
 
-
+addBookToLibrary("Bless Me Ultima", "Rudolpho Anaya", 300, "Yes")
 addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "Yes");
 
 
-/*console.log(myLibrary);
-
-for (obj in myLibrary) {
-  console.log(myLibrary[obj]);
-
-}*/
-
-function removeItemOnce(arr, value){
-  const index = arr.indexOf(value);
-
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-
-  return arr;
-}
-
-
-
-
-//for (const obj in myLibrary) {
-
-  //console.log(Object.values(obj));
-
-//}
 
 
 //Dialog Button Open and Close/////////
@@ -214,3 +192,4 @@ form.addEventListener("submit", (event) => {
 
 
 console.log(myLibrary);
+
