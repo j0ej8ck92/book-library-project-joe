@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) { //figure out parameter for read value and how to use sync value of form to book constructor///
+function Book(title, author, pages, read) { 
   // the constructor...
    this.title = title;
    this.author = author;
@@ -10,41 +10,41 @@ function Book(title, author, pages, read) { //figure out parameter for read valu
 }
 
 function addBookToLibrary(title, author, pages, read) {
-  // take params, create a book then store it in the array
-  let newBook = new Book(title, author, pages, read);
+
+  const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
 
-  let cardDiv = document.createElement("div");
+  const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
 
-  let libraryContent = document.querySelector(".library-content");
+  const libraryContent = document.querySelector(".library-content");
   libraryContent.append(cardDiv);
 
-  let bookTitle = document.createElement("div");
+  const bookTitle = document.createElement("div");
   bookTitle.classList.add("book-title");
   cardDiv.append(bookTitle);
   bookTitle.textContent = newBook.title;
 
-  let authorName = document.createElement("div");
+  const authorName = document.createElement("div");
   authorName.classList.add("author");
   cardDiv.append(authorName);
   authorName.textContent = newBook.author;
 
-  let bookPages = document.createElement("div");
+  const bookPages = document.createElement("div");
   bookPages.classList.add("pages");
   cardDiv.append(bookPages);
   bookPages.textContent = newBook.pages;
 
-  let bookRead = document.createElement("div");
+  const bookRead = document.createElement("div");
   bookRead.classList.add("read");
   cardDiv.append(bookRead);
  
-  let readButton = document.createElement("button");
+  const readButton = document.createElement("button");
   readButton.classList.add("read-yes-or-no");
   bookRead.append(readButton);
   readButton.textContent = "Read:";
 
-  let readValue = document.createElement("div");
+  const readValue = document.createElement("div");
   readValue.classList.add("read-value");
   bookRead.append(readValue);
   readValue.textContent = newBook.read;
@@ -54,23 +54,29 @@ function addBookToLibrary(title, author, pages, read) {
     if (readValue.textContent === "Yes") {
 
       readValue.textContent = "No";
-
+      
     } else {
 
       readValue.textContent = "Yes";
+    
     }
   });
 
-  let deleteDiv = document.createElement("div");
+  const deleteDiv = document.createElement("div");
   deleteDiv.classList.add(".delete-div");
   cardDiv.append(deleteDiv);
 
-  let deleteBookButton = document.createElement("button");
+  const deleteBookButton = document.createElement("button");
   deleteBookButton.classList.add("delete-book-button");
   deleteBookButton.textContent = "Delete";
   deleteDiv.append(deleteBookButton);
 
   deleteBookButton.addEventListener("click", function(event) {
+
+    if (!confirm("Are you sure you want to delete this book?")) {
+      return;
+    }
+    
     const bookId = newBook.id;
     const index = myLibrary.findIndex(book => book.id === bookId);
     myLibrary.splice(index, 1);
@@ -96,17 +102,20 @@ cancelBookButton.addEventListener("click", function() {
 })
 
 
-let form = document.getElementById("form");
-let bookNameInput = document.getElementById("book-name");
-let authorNameInput = document.getElementById("author-name");
-let pageCountInput = document.getElementById("page-count");
-let readSelection = document.getElementById("select");
-let submitButton = document.getElementById("submit");
+const form = document.getElementById("form");
+const bookNameInput = document.getElementById("book-name");
+const authorNameInput = document.getElementById("author-name");
+const pageCountInput = document.getElementById("page-count");
+const readSelection = document.getElementById("select");
+const submitButton = document.getElementById("submit");
 
 form.addEventListener("submit", (event) => {
    event.preventDefault();
    addBookToLibrary(bookNameInput.value, authorNameInput.value, pageCountInput.value, readSelection.value);
    form.reset();
+   console.log(myLibrary);
 })
+
+
 
 
