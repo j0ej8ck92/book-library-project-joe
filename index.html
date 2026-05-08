@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-div">
                 <label for="page-count">Page Number:</label>
-                <input type="number" name="page-count" id="page-count" required>
+                <input type="number" name="page-count" id="page-count" min="1" required>
                 </div>
                 <div class="form-div">
                 <label for="confirm">Read:</label>
@@ -39,11 +39,17 @@
                 <div class="form-div">
                 <button id="submit" type="submit">Submit<button>
                 </div>
+                <div class="form-div">
+                <button class="cancel-book">Cancel</button>
+                </div>
             </form>
-            <button class="cancel-book">Cancel</button>
           </div>  
         </dialog>
-        <button class="add-book">Add Book</button>
+        <div class="add-book-div">
+            <button class="add-book">
+                <div class="add-book-text">Add Book</div>
+            </button>
+        </div>
     </div>
     <div class="sidebar">Library</div>
     <div class="library-content"></div>

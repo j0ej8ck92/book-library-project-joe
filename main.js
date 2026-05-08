@@ -42,7 +42,7 @@ function addBookToLibrary(title, author, pages, read) {
   const readButton = document.createElement("button");
   readButton.classList.add("read-yes-or-no");
   bookRead.append(readButton);
-  readButton.textContent = "Read:";
+  readButton.textContent = "Read";
 
   const readValue = document.createElement("div");
   readValue.classList.add("read-value");
@@ -63,7 +63,7 @@ function addBookToLibrary(title, author, pages, read) {
   });
 
   const deleteDiv = document.createElement("div");
-  deleteDiv.classList.add(".delete-div");
+  deleteDiv.classList.add("delete-div");
   cardDiv.append(deleteDiv);
 
   const deleteBookButton = document.createElement("button");
@@ -76,7 +76,7 @@ function addBookToLibrary(title, author, pages, read) {
     if (!confirm("Are you sure you want to delete this book?")) {
       return;
     }
-    
+
     const bookId = newBook.id;
     const index = myLibrary.findIndex(book => book.id === bookId);
     myLibrary.splice(index, 1);
@@ -89,7 +89,7 @@ addBookToLibrary("Bless Me Ultima", "Rudolpho Anaya", 300, "Yes")
 addBookToLibrary("To Kill a MockingBird", "Harper Lee", 284, "Yes");
 
 const bookDialog = document.getElementById("book-dialog");
-const addBookButton = document.querySelector("#book-dialog + .add-book");
+const addBookButton = document.querySelector(".add-book");
 const cancelBookButton = document.querySelector(".cancel-book");
 
 
