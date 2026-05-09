@@ -112,6 +112,7 @@ const submitButton = document.getElementById("submit");
 form.addEventListener("submit", (event) => {
    event.preventDefault();
    addBookToLibrary(bookNameInput.value, authorNameInput.value, pageCountInput.value, readSelection.value);
+   bookDialog.close();
    form.reset();
    console.log(myLibrary);
 })
