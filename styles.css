@@ -9,7 +9,6 @@ html body {
     font-style: normal;
     color: #a19a8c;
     background-color: rgb(26, 26, 26);
-    
 }
 
 
@@ -18,7 +17,6 @@ html body {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-rows: repeat(5, minmax(0, 1fr));
-
 }
 
 .header {
@@ -52,7 +50,6 @@ html body {
         outline: none;
         transition: all 0.3s;
         user-select: none;
-
 }
 
 .add-book:hover {
@@ -101,21 +98,67 @@ html body {
 .dialog-content {
     
     width: 350px;
-    height: 400px;
+    height: 500px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
     border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-
+    background-color: rgb(26, 26, 26);
 }
 
+#form {
+    width: 100%; 
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: #a19a8c;
+    background-color: rgb(26, 26, 26);
+    margin-top: 1em;
+}
 
+.form-div {
+    display: grid;
+    padding-bottom: 1em;
+}
 
+input {
+    font: inherit;
+    outline: none;
+    color: #a19a8c;
+    background-color: rgb(26, 26, 26);
+    border-radius: 6px;
+}
 
+label {
+    margin-bottom: .75em;
+}
+
+select {
+    color: #a19a8c;
+    background-color: rgb(26, 26, 26);
+    border-radius: 4px;
+}
+
+#submit, .cancel-book {
+    background: var(--color-back);
+    border-radius: 0.5em;
+    box-shadow:
+        inset 0px -6px 18px -6px rgba(3, 15, 20, 0),
+        inset rgba(54, 69, 75, 1) -1px -1px 6px 0px,
+        inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
+        inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
+        rgba(54, 69, 75, 1) -1px -1px 6px 0px;
+    border: solid .2px #030f14;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0.7em 1.7em;
+    outline: none;
+    transition: all 0.3s;
+    user-select: none;
+    color: #a19a8c;
+}
 
 .sidebar {
     grid-column: 1 / 1;
@@ -127,8 +170,6 @@ html body {
     font-weight: bold;
     color: #a19a8c;
     background-color: rgb(26, 26, 26);
-    
-
 }
 
 .library-content {
@@ -160,12 +201,10 @@ html body {
         rgba(54, 69, 75, 1) -1px -1px 6px 0px;
     border: solid .2px #030f14;
     cursor: pointer;
-    
 }
 
 .read {
     display: flex;
-   
 }
 
 .read-yes-or-no {
@@ -203,16 +242,6 @@ html body {
     cursor: pointer;
     color: #a19a8c;
 }
-
-/*.read-yes-or-no::hover, .delete-book-button::hover {
-    box-shadow:
-    inset 0px -6px 18px -6px rgba(3, 15, 20, 1),
-    inset 0px 6px 18px -6px rgba(3, 15, 20, 1),
-    inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
-    inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
-    -1px -1px 6px 0px rgba(54, 69, 75, 1);
-}*/
-
 
 .book-title, .author, .pages {
     font-size: 20px;
